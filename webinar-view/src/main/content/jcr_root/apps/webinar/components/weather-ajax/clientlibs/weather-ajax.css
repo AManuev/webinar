@@ -1,0 +1,12 @@
+.global-weather-ajax {
+    background-color: lawngreen;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    border: 1px solid darkblue;
+    }
+    .global-weather-ajax__header {
+        font-size: larger;
+        color: black;
+        font-weight:bold;
+    }

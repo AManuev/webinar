@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspaceFilter version="1.0">
+    <filter root="/content/webinar"/>
+    <filter root="/content/dam/webinar">
+        <!-- exclude pattern=".*/renditions.*"/ -->
+    </filter>
+    <filter root="/etc/designs/webinar/jcr:content">
+        <include pattern="/etc/designs/webinar/jcr:content(/.*)+"/>
+    </filter>
+</workspaceFilter>

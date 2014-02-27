@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspaceFilter version="1.0">
+    <filter root="/apps/webinar">
+        <exclude pattern="/apps/webinar/install.*"/>
+        <exclude pattern="/apps/webinar/runmodes.*"/>
+    </filter>
+    <filter root="/etc/clientlibs/webinar"/>
+	<filter root="/etc/designs/webinar">
+        <exclude pattern="/etc/designs/webinar/jcr:content.*"/>
+    </filter>
+</workspaceFilter>

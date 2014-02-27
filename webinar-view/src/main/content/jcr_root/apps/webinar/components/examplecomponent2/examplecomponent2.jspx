@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    This is a simple non-page component using the preferred JSPX format that extends the foundation parbase component.
+
+-->
+
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:cq-demo="http://com.epam.cq.demo.webinar/taglibs/webinar-taglib"
+          version="2.1">
+    
+    <jsp:directive.include file="/apps/webinar/components/global.jspx"/>
+    
+    <p>This is an example non-page component (examplecomponent2).</p>
+    
+    <h1><cq-demo:goodbyeWorld name="CQ Blueprints User"/></h1>
+
+</jsp:root>
