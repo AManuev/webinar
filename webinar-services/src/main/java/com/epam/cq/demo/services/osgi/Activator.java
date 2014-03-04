@@ -3,6 +3,7 @@ package com.epam.cq.demo.services.osgi;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,12 +15,11 @@ import com.cognifide.slice.core.internal.context.SliceContextScope;
 import com.cognifide.slice.cq.module.CQModulesFactory;
 import com.cognifide.slice.validation.ValidationModulesFactory;
 import com.google.inject.Module;
-import com.squeakysand.osgi.framework.BasicBundleActivator;
 
 /**
  * Bundle activator for com.epam.cq.demo - webinar-services.
  */
-public class Activator extends BasicBundleActivator {
+public class Activator implements BundleActivator {
 
     private static final Logger LOG = LoggerFactory.getLogger(Activator.class);
 
@@ -36,10 +36,6 @@ public class Activator extends BasicBundleActivator {
     private static final String BASE_PACKAGE = "com.epam.cq.demo.services";
     /* name of the injector under which is registered */
     private static final String INJECTOR_NAME = "webinar";
-
-    public Activator() {
-        super(LOG);
-    }
 
     @Override
     public void start(BundleContext bundleContext) {

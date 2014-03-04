@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -25,8 +26,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.squeakysand.osgi</groupId>
-            <artifactId>squeakysand-osgi</artifactId>
+            <groupId>com.day.commons.osgi.wrapper</groupId>
+            <artifactId>com.day.commons.osgi.wrapper.commons-lang2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -40,6 +41,26 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+
+        <!-- START JAX-RS API -->
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-osgi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wink</groupId>
+            <artifactId>wink-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- END Apache Wink -->
 
         <!-- add after a archetype creation -->
         <dependency>
@@ -105,6 +126,18 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>com.epam.cq.demo.services.osgi.Activator</Bundle-Activator>
+                        <!-- Apache Wink try to get transitive dependencies, should be configured -->
+                        <Import-Bundle>
+                            *
+                        </Import-Bundle>
+                        <Import-Package>
+                            !org.apache.log,
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Embed-Transitive>false</Embed-Transitive>
+                        <Export-Package>
+                            com.epam.cq.demo.services.*
+                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
