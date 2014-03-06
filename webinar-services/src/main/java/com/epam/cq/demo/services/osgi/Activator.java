@@ -68,7 +68,8 @@ public class Activator implements BundleActivator {
 
     private List<Module> createCustomModules() {
         List<Module> applicationModules = new ArrayList<Module>();
-        // populate the list with your modules
+
+        applicationModules.add(new OsgiServicesModule());
         return applicationModules;
     }
 

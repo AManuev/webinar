@@ -11,11 +11,17 @@
     <span class="global-weather__header">${model.title}</span>
     <br>
     <span>
-        This is example show how to use SLICE bean in JSP.
+        This example show how to use SLICE bean in JSP.
         Also you can see there CSS class name convention example and i18n.
-
+        <br>
         <fmt:message key="info.weather.Info"/>
+    </span>
 
+    <br>
+    <span>
+        This example show how to use SLICE bean in JSP with OSGi service.
+        <br>
+        ${model.messageFromService}
     </span>
 </div><%--/.global-weather--%>
 

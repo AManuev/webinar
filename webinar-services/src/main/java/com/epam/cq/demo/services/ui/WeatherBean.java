@@ -4,6 +4,7 @@ import com.cognifide.slice.cq.qualifier.CurrentPage;
 import com.cognifide.slice.mapper.annotation.JcrProperty;
 import com.cognifide.slice.mapper.annotation.SliceResource;
 import com.day.cq.wcm.api.Page;
+import com.epam.cq.demo.services.GoodbyeWorldService;
 import com.epam.cq.demo.services.servlet.MessageServlet;
 import com.google.inject.Inject;
 
@@ -17,6 +18,9 @@ public class WeatherBean {
     @CurrentPage
     private Page currentPage;
 
+    @Inject
+    private GoodbyeWorldService goodbyeWorldService;
+
     public String getTitle() {
         return title;
     }
@@ -25,4 +29,7 @@ public class WeatherBean {
         return MessageServlet.MAPPING_PATH;
     }
 
+    public String getMessageFromService() {
+        return goodbyeWorldService.getMessage("Example Slice bean and OSGi service collaboration.");
+    }
 }
