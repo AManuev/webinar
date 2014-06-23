@@ -1,10 +1,10 @@
 package com.epam.cq.demo.taglib;
 
 import com.cqblueprints.taglib.CqSimpleTagSupport;
+import com.epam.cq.demo.services.GoodbyeWorldService;
+import com.epam.cq.demo.services.GoodbyeWorldServiceImpl;
 import com.squeakysand.jsp.tagext.annotations.JspTag;
 import com.squeakysand.jsp.tagext.annotations.JspTagAttribute;
-
-import com.epam.cq.demo.services.GoodbyeWorldService;
 
 import java.io.IOException;
 
@@ -28,7 +28,7 @@ public class GoodbyeWorldTag extends CqSimpleTagSupport {
 
     @Override
     public void doTag() throws JspException, IOException {
-        GoodbyeWorldService service = getService(GoodbyeWorldService.class);
+        GoodbyeWorldService service = getService(GoodbyeWorldServiceImpl.class);
         String message = service.getMessage(name);
         getJspWriter().write(message);
     }

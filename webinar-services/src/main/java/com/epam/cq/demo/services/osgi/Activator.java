@@ -3,6 +3,8 @@ package com.epam.cq.demo.services.osgi;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
@@ -14,12 +16,14 @@ import com.cognifide.slice.commons.SliceModulesFactory;
 import com.cognifide.slice.core.internal.context.SliceContextScope;
 import com.cognifide.slice.cq.module.CQModulesFactory;
 import com.cognifide.slice.validation.ValidationModulesFactory;
+import com.epam.cq.demo.services.GoodbyeWorldService;
+import com.epam.cq.demo.services.aspect.GoodbyeWorldServiceMonitor;
 import com.google.inject.Module;
 
 /**
  * Bundle activator for com.epam.cq.demo - webinar-services.
  */
-public class Activator implements BundleActivator {
+public class Activator extends DependencyActivatorBase implements BundleActivator {
 
     private static final Logger LOG = LoggerFactory.getLogger(Activator.class);
 
@@ -38,7 +42,21 @@ public class Activator implements BundleActivator {
     private static final String INJECTOR_NAME = "webinar";
 
     @Override
-    public void start(BundleContext bundleContext) {
+    public void init(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+        // init aspect service in OSGi container
+        dependencyManager.add(dependencyManager.createAspectService(GoodbyeWorldService.class, "", 50)
+                .setImplementation(GoodbyeWorldServiceMonitor.class));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
+    }
+
+    @Override
+    public void start(BundleContext bundleContext) throws Exception {
+        LOG.info("start in activator was call");
+        super.start(bundleContext);
 
         final ContextScope scope = new SliceContextScope();
         /*
@@ -63,6 +81,7 @@ public class Activator implements BundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
+        super.stop(bundleContext);
         // To change body of implemented methods use File | Settings | File Templates.
     }
 
