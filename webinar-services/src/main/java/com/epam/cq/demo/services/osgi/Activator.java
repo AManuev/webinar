@@ -43,8 +43,9 @@ public class Activator extends DependencyActivatorBase implements BundleActivato
 
     @Override
     public void init(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
-        // init aspect service in OSGi container
-        dependencyManager.add(dependencyManager.createAspectService(GoodbyeWorldService.class, "", 50)
+        // Register aspect service in service registry
+        String filter = "";
+        dependencyManager.add(dependencyManager.createAspectService(GoodbyeWorldService.class, filter, 50)
                 .setImplementation(GoodbyeWorldServiceMonitor.class));
     }
 
