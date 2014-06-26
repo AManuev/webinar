@@ -131,6 +131,11 @@
         </dependency>
         <!-- End JAX-RS & Wink OSGi -->
 
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -237,6 +242,12 @@
                                     <filter>true</filter>
                                 </embedded>
                                 <!-- end slice -->
+
+                                <embedded>
+                                    <groupId>org.osgi</groupId>
+                                    <artifactId>org.osgi.core</artifactId>
+                                    <filter>true</filter>
+                                </embedded>
 
                             </embeddeds>
                             <subPackages>
