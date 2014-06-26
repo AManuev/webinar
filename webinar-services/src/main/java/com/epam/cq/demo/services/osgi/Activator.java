@@ -7,6 +7,7 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.hooks.service.EventHook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +17,7 @@ import com.cognifide.slice.commons.SliceModulesFactory;
 import com.cognifide.slice.core.internal.context.SliceContextScope;
 import com.cognifide.slice.cq.module.CQModulesFactory;
 import com.cognifide.slice.validation.ValidationModulesFactory;
+import com.epam.cq.demo.services.interceptors.MetricsHooks;
 import com.google.inject.Module;
 
 /**
@@ -39,18 +41,19 @@ public class Activator extends DependencyActivatorBase implements BundleActivato
     /* name of the injector under which is registered */
     private static final String INJECTOR_NAME = "webinar";
 
-    private ServiceProxyManager listenerEvent;
+    // private ServiceProxyManager listenerEvent;
 
     @Override
     public void init(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
         // 1. Using dependency manager for aspect service registration
         /*
-        * Register aspect service in service registry manually
-        */
+         * Register aspect service in service registry manually
+         */
 
-//        String filter = "";
-//        dependencyManager.add(dependencyManager.createAspectService(GoodbyeWorldService.class, filter, 50)
-//                .setImplementation(GoodbyeWorldServiceMonitor.class));
+        // String filter = "";
+        // dependencyManager.add(dependencyManager.createAspectService(GoodbyeWorldService.class,
+        // filter, 50)
+        // .setImplementation(GoodbyeWorldServiceMonitor.class));
     }
 
     @Override
@@ -85,30 +88,30 @@ public class Activator extends DependencyActivatorBase implements BundleActivato
 
         /*
          * 2. Collect metrics based on OSGi 4.2.0 Service Hooks
-         *
-         * Register dynamic proxy service which handle all method calls.
-         * We can collect metrics before/after method invocation
+         * 
+         * Register dynamic proxy service which handle all method calls. We can collect metrics
+         * before/after method invocation
          */
-//        MetricsHooks loggerHooks = new MetricsHooks(bundleContext);
-//        bundleContext.registerService(new String[]{EventHook.class.getName()}, loggerHooks, null);
+        MetricsHooks loggerHooks = new MetricsHooks(bundleContext);
+        bundleContext.registerService(new String[] { EventHook.class.getName() }, loggerHooks, null);
 
-
-         /*TODO:
-         * 3. Collect metrics based on OSGi 4.1.0 with AllServiceListener interface and CGLIB help
-         *
-         * Register dynamic proxy service which handle all method calls.
-         * We can collect metrics before/after method invocation
+        /*
+         * TODO: 3. Collect metrics based on OSGi 4.1.0 with AllServiceListener interface and CGLIB
+         * help
+         * 
+         * Register dynamic proxy service which handle all method calls. We can collect metrics
+         * before/after method invocation
          */
 
-//        listenerEvent = new ServiceProxyManager();
-//        bundleContext.addServiceListener(listenerEvent);
+        // listenerEvent = new ServiceProxyManager();
+        // bundleContext.addServiceListener(listenerEvent);
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
         super.stop(bundleContext);
 
-//        bundleContext.removeServiceListener(listenerEvent);
+        // bundleContext.removeServiceListener(listenerEvent);
     }
 
     private List<Module> createCustomModules() {
