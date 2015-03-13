@@ -10,7 +10,7 @@ import org.osgi.framework.Constants;
 @Component(immediate = true, metatype = true)
 @Service(GoodbyeWorldService.class)
 @Properties({
-    @Property(name = Constants.SERVICE_VENDOR, value = "CQ Blueprints"),
+    @Property(name = Constants.SERVICE_VENDOR, value = "EPAM Systems"),
     @Property(name = Constants.SERVICE_DESCRIPTION, value = "Provides a friendly farewell.")
 })
 public class GoodbyeWorldServiceImpl implements GoodbyeWorldService {

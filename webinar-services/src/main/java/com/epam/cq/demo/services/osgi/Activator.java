@@ -32,7 +32,7 @@ public class Activator extends DependencyActivatorBase implements BundleActivato
      * 
      * @SliceResource
      */
-    private static final String BUNDLE_NAME_FILTER = "com\\.epam\\.cq\\.demo\\.services\\..*";
+    private static final String BUNDLE_NAME_FILTER = "com\\.epam\\.cq\\.demo\\.webinar-services.*";
     /*
      * the base package that defines which packages inside bundles specified above to scan in order
      * to find classes annotated by @SliceResource annotation.
