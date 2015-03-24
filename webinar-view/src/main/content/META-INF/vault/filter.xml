@@ -2,7 +2,7 @@
 
 <workspaceFilter version="1.0">
     <filter root="/apps/webinar">
-        <exclude pattern="/apps/webinar/install.*"/>
+        <exclude pattern="/apps/webinar/install/.*"/>
         <exclude pattern="/apps/webinar/runmodes.*"/>
     </filter>
     <filter root="/etc/clientlibs/webinar"/>

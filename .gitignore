@@ -8,6 +8,8 @@ target
 .ruleset
 .springBeans
 eclipsebin
+.project
+.classpath
 
 .class
 *.zip
@@ -20,7 +22,6 @@ eclipsebin
 gensrc
 *.iml
 .DS_Store
-.vlt*
 *.swp
 *~
 *.orig
